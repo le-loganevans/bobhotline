@@ -4,12 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 const messages = [
-  { label: "Oh, hi!", src: "/audio/message1.mp3" },
-  { label: "Weeeell!", src: "/audio/message2.mp3" },
-  { label: "Horoo...", src: "/audio/message3.mp3" },
-  { label: "Mmm Yeah", src: "/audio/message4.mp3" },
-  { label: "Oooh Alex!", src: "/audio/message5.mp3" },
-  { label: "Bye for now...", src: "/audio/message6.mp3" },
+  { label: "Talking Jargon!", src: "/audio/talkJargon.mp3" },
+  { label: "bOoOoB", src: "/audio/booooob.mp3" },
+  { label: "Horoo...", src: "/audio/horoo.mp3" },
+  { label: "Hogwash", src: "/audio/hogwashPeople.mp3" },
+  { label: "Oooh!", src: "/audio/oooh.mp3" },
+  { label: "Hi Alex!", src: "/audio/hiAlex.mp3" },
 ];
 
 export default function HomePage() {
@@ -57,7 +57,7 @@ export default function HomePage() {
       />
 
       <div className="relative z-10 text-center text-white">
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">📞 Bob’s Hotline</h1>
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Bob’s Hotline</h1>
         <p className="text-gray-300 max-w-xl mx-auto text-lg md:text-xl mb-12">
           Tap a button to hear one of Bob’s iconic phrases.
         </p>
