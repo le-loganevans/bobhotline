@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import React from "react";
 
 const messages = [
   { label: "Talking Jargon!", src: "/audio/talkJargon.mp3" },
@@ -12,9 +13,22 @@ const messages = [
   { label: "Hi Alex!", src: "/audio/hiAlex.mp3" },
 ];
 
+const ICON_COUNT = 10;
+const ICON_SIZE = 32;
+
+interface Icon {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  ref: React.RefObject<HTMLDivElement | null>;
+}
+
 export default function HomePage() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const iconsRef = useRef<Icon[]>([]);
 
   useEffect(() => {
     audioRef.current = new Audio();
@@ -23,6 +37,62 @@ export default function HomePage() {
       audioRef.current?.pause();
       audioRef.current = null;
     };
+  }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const icons: Icon[] = Array.from({ length: ICON_COUNT }).map(() => {
+      return {
+        x: Math.random() * (window.innerWidth - ICON_SIZE),
+        y: Math.random() * (window.innerHeight - ICON_SIZE),
+        vx: (Math.random() - 0.5) * 2,
+        vy: (Math.random() - 0.5) * 2,
+        ref: React.createRef<HTMLDivElement>(),
+      };
+    });
+
+    iconsRef.current = icons;
+
+    const update = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      for (let i = 0; i < ICON_COUNT; i++) {
+        const icon = icons[i];
+
+        icon.x += icon.vx;
+        icon.y += icon.vy;
+
+        // bounce off edges
+        if (icon.x <= 0 || icon.x + ICON_SIZE >= width) icon.vx *= -1;
+        if (icon.y <= 0 || icon.y + ICON_SIZE >= height) icon.vy *= -1;
+
+        // bounce off other icons
+        for (let j = i + 1; j < ICON_COUNT; j++) {
+          const other = icons[j];
+          const dx = icon.x - other.x;
+          const dy = icon.y - other.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < ICON_SIZE) {
+            // swap velocities
+            [icon.vx, other.vx] = [other.vx, icon.vx];
+            [icon.vy, other.vy] = [other.vy, icon.vy];
+          }
+        }
+
+        const el = icon.ref.current;
+        if (el) {
+          el.style.transform = `translate(${icon.x}px, ${icon.y}px)`;
+        }
+      }
+
+      requestAnimationFrame(update);
+    };
+
+    requestAnimationFrame(update);
   }, []);
 
   const playAudio = (src: string) => {
@@ -42,19 +112,24 @@ export default function HomePage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="relative min-h-screen flex flex-col items-center justify-center px-6 py-12 bg-neutral-900 overflow-hidden"
+      ref={containerRef}
     >
-      {/* Glow background animation */}
-      <motion.div
-        className="absolute inset-0 z-0 pointer-events-none"
-        animate={{
-          background: [
-            "radial-gradient(circle at 30% 30%, #4f46e5 0%, transparent 40%)",
-            "radial-gradient(circle at 70% 40%, #06b6d4 0%, transparent 40%)",
-            "radial-gradient(circle at 50% 60%, #4f46e5 0%, transparent 40%)",
-          ],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {/* Floating favicon elements behind everything */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {iconsRef.current.map((icon, i) => (
+          <motion.div
+            key={i}
+            ref={icon.ref}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: i * 0.05 }}
+            className="absolute w-8 h-8"
+            style={{ transform: `translate(${icon.x}px, ${icon.y}px)` }}
+          >
+            <img src="/bob.ico" alt="icon" className="w-full h-full" />
+          </motion.div>
+        ))}
+      </div>
 
       <div className="relative z-10 text-center text-white">
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Bob’s Hotline</h1>
