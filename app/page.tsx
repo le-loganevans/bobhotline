@@ -155,7 +155,7 @@ export default function HomePage() {
       </div>
 
       <footer className="relative z-10 mt-16 text-xs text-gray-500">
-        v1.0 — Bob Hotline — Designed by lestudio
+        v1.0.2505 — Bob Hotline — Designed by lestudio
       </footer>
     </motion.div>
   );
