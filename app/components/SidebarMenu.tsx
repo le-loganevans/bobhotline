@@ -45,7 +45,7 @@ export default function SidebarMenu() {
         <Link href="/" className="block px-2 py-2 rounded hover:bg-neutral-800 text-sm">
           🔊 Hotline
         </Link>
-        <Link href="/bob" className="block px-2 py-2 rounded hover:bg-neutral-800 text-sm">
+        <Link href="/tribute" className="block px-2 py-2 rounded hover:bg-neutral-800 text-sm">
           🎬 Tribute
         </Link>
         <Link href="/gallery" className="block px-2 py-2 rounded hover:bg-neutral-800 text-sm">
