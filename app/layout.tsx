@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import SidebarMenu from "@/app/components/SidebarMenu";
 
 
 export const metadata: Metadata = {
@@ -16,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <SidebarMenu />
         {children}
       </body>
     </html>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import React from "react";
+import Link from "next/link";
 
 const messages = [
   { label: "Talking Jargon!", src: "/audio/talkJargon.mp3" },
@@ -133,6 +134,9 @@ export default function HomePage() {
 
       <div className="relative z-10 text-center text-white">
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Bob’s Hotline</h1>
+        <Link href="/bob" className="text-cyan-300 hover:underline text-sm mt-4 block">
+        Learn about Bob's life →
+        </Link>
         <p className="text-gray-300 max-w-xl mx-auto text-lg md:text-xl mb-12">
           Tap a button to hear one of Bob’s iconic phrases.
         </p>
