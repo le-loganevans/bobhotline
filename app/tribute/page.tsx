@@ -19,6 +19,15 @@ const toggle = (index: number) => setOpenIndex(openIndex === index ? null : inde
     >
       <div className="max-w-2xl w-full text-center">
         <h1 className="text-4xl md:text-6xl font-bold mb-6">In Memory of Bob</h1>
+        <p className="text-gray-300 text-lg md:text-xl mb-8">
+          Bob was more than just a voice on the line. He was known for his wit, warmth, and unforgettable phrases, Bob brought joy to those around him with every call.
+        </p>
+        <p className="text-gray-400 mb-6">
+          From spontaneous catchphrases like "Horoo..." and "Talking Jargon!" to heartfelt hellos, Bob's hotline became a sanctuary of comfort, laughter, and a little bit of mischief.
+        </p>
+        <p className="text-gray-400 mb-6">
+          Bob lived a life full of stories — late-night chats, early morning rambles, and enough wisdom to fill volumes. His voice lives on through this digital tribute.
+        </p>
 
         {/* 🎥 YouTube Video Embed */}
         <div className="aspect-video w-full mb-10 rounded-lg overflow-hidden shadow-lg">
@@ -125,53 +134,13 @@ const toggle = (index: number) => setOpenIndex(openIndex === index ? null : inde
                 <p>
                   So, as we conclude Bob’s life in words, it’s not truly goodbye. Because Bob’s spirit — his way of turning life into something richer, funnier, and fuller of love — stays with us. So instead, we all bid you farewell. We only wish you safe travels and hope you return when you’re ready to talk about all your new experiences.
                 </p>
-                <p>
-                  As we gather here today, we might feel the temptation of sadness — but today is not about goodbyes. It's about celebrating Bob who has simply set off on his next great adventure, exploring new places, making new friends, and, no doubt, sharing a few laughs along the way.
-                </p>
-                <p>
-                  We know he’ll be busy chatting, telling his stories, and enjoying every moment. And one day, when he’s ready, we’re sure he’ll be back to fill us in on all the wonderful journeys he’s been on.
-                </p>
-                <p>
-                  Until then, we’ll hold tightly onto our memories of you, Bob.{"\n"}
-                  We’ll keep sharing your stories.{"\n"}
-                  We’ll keep your spirit alive in the small moments, in the laughter, and in the love that we give to others.
-                </p>
-                <p>
-                  Because Bob didn’t just live life — he filled it, he coloured it, and he invited everyone around him to be part of it.{"\n"}
-                  He taught us to create experiences worth remembering.{"\n"}
-                  He taught us to laugh a little louder, to love a little deeper, and to find joy, even when life gets hard.
-                </p>
-                <p>
-                  And although Bob grew quieter in his final months — as the laughter softened and the stories grew shorter — he still faced his next adventure with courage at heart.
-                </p>
-                <p>
-                  And now, it’s up to us to carry that courage forward.{"\n"}
-                  To let Bob’s life remind us to cherish the small moments, to choose kindness, and to shine a little brighter for those around us.
-                </p>
-                <p>
-                  So today, from all of us who were lucky enough to be part of his story, we simply say:{"\n"}
-                  We love you.{"\n"}
-                  We’ll miss you.{"\n"}
-                  Hooroo — and bye for now.
-                </p>
               </div>
             }
           />
 
 
 
-        <p className="text-gray-300 text-lg md:text-xl mb-8">
-          Bob was more than just a voice on the line — he was a legend. Known for his wit, warmth, and unforgettable phrases, Bob brought joy to those around him with every call.
-        </p>
-        <p className="text-gray-400 mb-6">
-          From spontaneous catchphrases like "Horoo..." and "Talking Jargon!" to heartfelt hellos, Bob's hotline became a sanctuary of comfort, laughter, and a little bit of mischief.
-        </p>
-        <p className="text-gray-400 mb-6">
-          Bob lived a life full of stories — late-night chats, early morning rambles, and enough wisdom to fill volumes. His voice lives on through this digital tribute.
-        </p>
-        <p className="text-cyan-400 italic">
-          "bOoOoB... you’re always just a tap away."
-        </p>
+
 
         <div className="mt-12">
           <a href="/" className="text-cyan-300 hover:underline text-sm">
