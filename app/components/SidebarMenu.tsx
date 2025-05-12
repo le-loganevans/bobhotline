@@ -31,11 +31,14 @@ export default function SidebarMenu() {
         className={`flex ${isMobile ? "justify-between px-4 py-2" : "items-center justify-between px-4 py-4 border-b border-neutral-700"}`}
       >
         <button
-          onClick={() => setOpen(!open)}
-          className="text-white hover:text-cyan-400 focus:outline-none"
+        onClick={() => setOpen(!open)}
+        className={`text-white hover:text-cyan-400 focus:outline-none ${
+            isMobile ? "text-2xl p-2" : "text-xl"
+        }`}
         >
-          {open ? "✕" : "☰"}
+        {open ? "✕" : "☰"}
         </button>
+
         {!isMobile && open && <span className="ml-2 font-semibold text-sm">Menu</span>}
       </div>
 
