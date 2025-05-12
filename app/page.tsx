@@ -132,7 +132,12 @@ export default function HomePage() {
         ))}
       </div>
 
-
+      <div className="relative z-10 text-center text-white">
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Bob’s Hotline</h1>
+        <p className="text-gray-300 max-w-xl mx-auto text-lg md:text-xl mb-12">
+          Tap a button to hear one of Bob’s iconic phrases.
+        </p>
+      </div>
 
       <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 gap-6 max-w-2xl w-full">
         {messages.map((msg, i) => (
