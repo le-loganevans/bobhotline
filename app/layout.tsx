@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 import SidebarMenu from "@/app/components/SidebarMenu";
 import { Poppins } from "next/font/google";
+import FeedbackFooter from "./components/FeedbackFooter";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
-  variable: "--font-poppins", // your custom CSS variable name
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -22,9 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={poppins.variable}>
-      <body className="font-sans">
+      <body className="min-h-screen flex flex-col font-sans bg-neutral-900 text-white">
         <SidebarMenu />
-        {children}
+        
+        <main className="flex-1">{children}</main>
+        <FeedbackFooter/>
       </body>
     </html>
   );
