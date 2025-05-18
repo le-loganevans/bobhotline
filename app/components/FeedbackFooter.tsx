@@ -8,7 +8,7 @@ export default function FeedbackFooter() {
 
   return (
     <>
-      <div className="text-center text-xs text-gray-500 py-6 space-y-2">
+      <div className="text-center text-xs text-gray-500 mb-16 md:mb-0">
         <div>
           v1.0.2505 — Bob Hotline — Designed by lestudio
         </div>

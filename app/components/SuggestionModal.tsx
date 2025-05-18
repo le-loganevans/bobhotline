@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, forwardRef, useImperativeHandle } from "react";
+import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 
 export interface SuggestionModalRef {
   open: () => void;
@@ -20,6 +20,15 @@ const SuggestionModal = forwardRef<SuggestionModalRef>((_, ref) => {
     setForm({ name: "", email: "", suggestion: "" });
     setStatus("idle");
   };
+
+  useEffect(() => {
+    if (status === "sent") {
+      const timeout = setTimeout(() => {
+        closeModal();
+      }, 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [status]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -48,7 +57,7 @@ const SuggestionModal = forwardRef<SuggestionModalRef>((_, ref) => {
 
   return (
     <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative text-black">
+      <div className="bg-white rounded-lg shadow-lg p-6 w-[75%] md:w-full max-w-md relative text-black">
         <button
           onClick={closeModal}
           className="absolute top-2 right-3 text-2xl text-gray-600 hover:text-red-500"
@@ -76,8 +85,7 @@ const SuggestionModal = forwardRef<SuggestionModalRef>((_, ref) => {
             required
             type="email"
             className="w-full p-2 border rounded"
-            />
-
+          />
 
           <textarea
             name="suggestion"
@@ -90,14 +98,26 @@ const SuggestionModal = forwardRef<SuggestionModalRef>((_, ref) => {
 
           <button
             type="submit"
-            disabled={status === "sending"}
-            className="w-full bg-cyan-700 hover:bg-cyan-800 text-white py-2 rounded"
+            disabled={status === "sending" || status === "sent"}
+            className={`w-full py-2 rounded ${
+              status === "sent"
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-cyan-700 hover:bg-cyan-800 text-white"
+            }`}
           >
-            {status === "sending" ? "Sending..." : "Submit"}
+            {status === "sending"
+              ? "Sending..."
+              : status === "sent"
+              ? "Sent!"
+              : "Submit"}
           </button>
 
-          {status === "sent" && <p className="text-green-600">✅ Sent! Thanks for your feedback.</p>}
-          {status === "error" && <p className="text-red-600">❌ Failed to send. Please try again.</p>}
+          {status === "sent" && (
+            <p className="text-green-600">✅ Sent! Thanks for your feedback.</p>
+          )}
+          {status === "error" && (
+            <p className="text-red-600">❌ Failed to send. Please try again.</p>
+          )}
         </form>
       </div>
     </div>
