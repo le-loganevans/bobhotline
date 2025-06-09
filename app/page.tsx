@@ -99,5 +99,15 @@ export default function Home() {
         </a>
       </footer>
     </div>
+    <section id="about" className="max-w-screen-md mx-auto p-8">
+      <h2 className="text-xl font-semibold mb-2">About</h2>
+      <p className="text-sm text-foreground/80">
+        This is a sample project demonstrating a responsive navigation menu.
+      </p>
+    </section>
+    <section id="contact" className="max-w-screen-md mx-auto p-8">
+      <h2 className="text-xl font-semibold mb-2">Contact</h2>
+      <p className="text-sm text-foreground/80">Feel free to reach out!</p>
+    </section>
   );
 }
