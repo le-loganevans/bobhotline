@@ -1,39 +1,61 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import AccordionItem from "@/app/components/AccordionItem";
-
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import AccordionItem from '@/app/components/AccordionItem';
 
 export default function InMemoryPage() {
-
-const [openIndex, setOpenIndex] = useState<number | null>(null);
-const toggle = (index: number) => setOpenIndex(openIndex === index ? null : index);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const toggle = (index: number) => setOpenIndex(openIndex === index ? null : index);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="min-h-screen bg-neutral-950 text-white px-6 py-12 flex flex-col items-center justify-center"
+    <motion.main
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="
+        relative z-10 min-h-dvh
+        flex items-center justify-center
+        px-6 py-16 md:py-24
+        text-white
+      "
     >
-      <div className="max-w-2xl w-full text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">In Memory of Bob</h1>
-        <p className="text-gray-300 text-lg md:text-xl mb-8">
-          Bob was more than just a voice on the line. He was known for his wit, warmth, and unforgettable phrases, Bob brought joy to those around him with every call.
-        </p>
-        <p className="text-gray-400 mb-6">
-          From spontaneous catchphrases like "Horoo..." and "Talking Jargon!" to heartfelt hellos, Bob's hotline became a sanctuary of comfort, laughter, and a little bit of mischief.
-        </p>
-        <p className="text-gray-400 mb-6">
-          Bob lived a life full of stories — late-night chats, early morning rambles, and enough wisdom to fill volumes. His voice lives on through this digital tribute.
-        </p>
+      <section
+        className="
+          w-full max-w-3xl
+          rounded-3xl border border-white/10
+          bg-white/5 backdrop-blur-xl
+          shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]
+          px-5 sm:px-8 md:px-10 py-8 sm:py-10 md:py-12
+        "
+      >
+        {/* Hero */}
+        <div className="text-center mb-8 md:mb-10">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[11px] uppercase tracking-wide text-zinc-300/90">
+            <span className="inline-block size-2 rounded-full bg-cyan-300" />
+            Tribute
+          </div>
 
-        {/* 🎥 YouTube Video Embed */}
-        <div className="aspect-video w-full mb-10 rounded-lg overflow-hidden shadow-lg">
+          <h1
+            className="
+              mt-4 text-4xl md:text-6xl font-black tracking-tight
+              bg-gradient-to-b from-white to-zinc-300/80 bg-clip-text text-transparent
+            "
+          >
+            In Memory of Bob
+          </h1>
+
+          <p className="mt-4 text-zinc-300/90 text-base md:text-lg max-w-2xl mx-auto">
+            Bob was more than a voice on the phone—his charm, warmth, and
+            unforgettable phrases brought joy with every call.
+          </p>
+        </div>
+
+        {/* Video */}
+        <div className="aspect-video w-full mb-8 md:mb-10 overflow-hidden rounded-2xl ring-1 ring-white/15 shadow-[0_6px_30px_-10px_rgba(0,0,0,0.6)]">
           <iframe
             src="https://www.youtube.com/embed/vs0urRCS02k?si=uTCx1mhW8A-Nqth-"
-            title="YouTube video player"
+            title="In Memory of Bob — Tribute"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
@@ -41,59 +63,31 @@ const toggle = (index: number) => setOpenIndex(openIndex === index ? null : inde
           />
         </div>
 
-        
-
-        <div className="mt-10 max-w-2xl mx-auto w-full">
-        <AccordionItem
-            title="✍️ Poem"
-            content={
-              <div className="text-center whitespace-pre-line text-sm sm:text-base leading-relaxed">
-              <strong>For Bob, Who Brought the Sunshine</strong>
-
-              {"\n\n"}We gather here with heavy hearts,{"\n"}
-              Yet laughter lingers, love restarts.{"\n"}
-              For Bob, whose grin could light the day,{"\n"}
-              Whose joy would never fade away.{"\n\n"}
-
-              He lived full throttle, bold and free,{"\n"}
-              A soul as deep as any sea.{"\n"}
-              From sunny Nelson’s golden glow,{"\n"}
-              To Invercargill, on he’d go.{"\n\n"}
-
-              Spencer Park with carnival cheer,{"\n"}
-              Amberley campgrounds, good times near.{"\n"}
-              Down to Dunedin, cruising the land,{"\n"}
-              Chasing blue skies and hot warm sand.{"\n\n"}
-
-              No map could hold the paths he’d roam,{"\n"}
-              But every road still led him home.{"\n"}
-              Flat white in hand, somehow always free,{"\n"}
-              A cheeky grin, and heart full of glee.{"\n\n"}
-
-              He’d crack a line to make you smile,{"\n"}
-              Stay for a yarn, stay for a while.{"\n"}
-              A father proud, a pop so dear,{"\n"}
-              To Logan, Alex, and grandkids near.{"\n\n"}
-
-              And though he’s left this world we see,{"\n"}
-              His spirit lives in you and me.{"\n\n"}
-
-              So here’s to Bob — forever bright,{"\n"}
-              Still chasing sunsets, still our shining light.
-            </div>
-            
-            }
-            isOpen={openIndex === 1}
-            onToggle={() => toggle(1)}
-          />
+        {/* Intro copy */}
+        <div className="prose prose-invert max-w-none prose-p:my-0">
+          <p className="text-zinc-300/90 text-base md:text-lg">
+            From spontaneous catchphrases like <em>“Horoo…”</em> and
+            <em> “Talking Jargon!”</em> to heartfelt hellos, Bob’s hotline became a
+            place of comfort, laughter, and a little mischief.
+          </p>
+          <p className="text-zinc-400 mt-4">
+            He lived a life full of stories—late-night chats, early-morning rambles,
+            and enough wisdom to fill volumes. His voice lives on through this
+            digital tribute.
+          </p>
         </div>
-        
-        <AccordionItem
+
+        {/* Divider */}
+        <div className="my-8 md:my-10 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+        {/* Accordions */}
+        <div className="space-y-4">
+          <AccordionItem
             title="📜 Eulogy Transcript"
             isOpen={openIndex === 0}
             onToggle={() => toggle(0)}
             content={
-              <div className="whitespace-pre-line text-left text-sm sm:text-base leading-relaxed space-y-4">
+              <div className="text-left text-sm sm:text-base leading-relaxed space-y-4 text-zinc-200">
                 <p>
                   Kia ora and welcome. It’s a privilege to be here with you all today, celebrating the life of Robert John Evans — or as we knew him, Bob. Today is not just about saying goodbye; it’s about honouring someone who, through every chapter of his life, gave us unforgettable experiences — the kind that stayed with us, that helped shape us to who we are today.
                 </p>
@@ -104,8 +98,7 @@ const toggle = (index: number) => setOpenIndex(openIndex === index ? null : inde
                   Some of these early memories were made whilst living at Momorangi Crescent, where the first self-driving tractor was discovered, which somehow managed to drive itself into nearby creeks, and where bikes would mysteriously disappear, only to reappear again just as quickly. These moments built the foundation of Bob’s mischievous character — but they also revealed something more: a life filled with laughter, jokes, and spontaneous adventure.
                 </p>
                 <p>
-                  Another bold memory was Bob's mastery of talking — maybe he missed his calling working as a politician, or he just enjoyed speaking a little jargon. He did however find his calling in the garden and early family farms. This is where Bob practiced multitasking, however, he shortly realised working and talking weren’t completely compatible.
-                  His focused mentality meant you should either be prepared for a day of working or a day filled with talking.
+                  Another bold memory was Bob's mastery of talking — maybe he missed his calling working as a politician, or he just enjoyed speaking a little jargon. He did however find his calling in the garden and early family farms. This is where Bob practiced multitasking, however, he shortly realised working and talking weren’t completely compatible. His focused mentality meant you should either be prepared for a day of working or a day filled with talking.
                 </p>
                 <p>
                   As he grew up, so too did his sense of adventure — and his sense of heart. Leaving the family home, he quickly found the freedoms of the world — Palladium and Firehouse just to name a few. But he didn't just chase the excitement of early adulthood — it was the connections he desired to make with people. The same connection he made with us. It was about friendships. It was about love. It was all of life’s lessons which he took with a grin and the occasional shrug.
@@ -138,16 +131,59 @@ const toggle = (index: number) => setOpenIndex(openIndex === index ? null : inde
             }
           />
 
+          <AccordionItem
+            title="✍️ Poem"
+            isOpen={openIndex === 1}
+            onToggle={() => toggle(1)}
+            content={
+              <div className="text-center whitespace-pre-line text-sm sm:text-base leading-relaxed text-zinc-200">
+                <strong className="block text-white/90">For Bob, Who Brought the Sunshine</strong>
+                {'\n\n'}We gather here with heavy hearts,{'\n'}
+                Yet laughter lingers, love restarts.{'\n'}
+                For Bob, whose grin could light the day,{'\n'}
+                Whose joy would never fade away.{'\n\n'}
+                He lived full throttle, bold and free,{'\n'}
+                A soul as deep as any sea.{'\n'}
+                From sunny Nelson’s golden glow,{'\n'}
+                To Invercargill, on he’d go.{'\n\n'}
+                Spencer Park with carnival cheer,{'\n'}
+                Amberley campgrounds, good times near.{'\n'}
+                Down to Dunedin, cruising the land,{'\n'}
+                Chasing blue skies and hot warm sand.{'\n\n'}
+                No map could hold the paths he’d roam,{'\n'}
+                But every road still led him home.{'\n'}
+                Flat white in hand, somehow always free,{'\n'}
+                A cheeky grin, and heart full of glee.{'\n\n'}
+                He’d crack a line to make you smile,{'\n'}
+                Stay for a yarn, stay for a while.{'\n'}
+                A father proud, a pop so dear,{'\n'}
+                To Logan, Alex, and grandkids near.{'\n\n'}
+                And though he’s left this world we see,{'\n'}
+                His spirit lives in you and me.{'\n\n'}
+                So here’s to Bob — forever bright,{'\n'}
+                Still chasing sunsets, still our shining light.
+              </div>
+            }
+          />
+        </div>
 
-
-
-
-        <div className="mt-12">
-          <a href="/" className="text-cyan-300 hover:underline text-sm">
+        {/* Footer actions */}
+        <div className="mt-10 flex justify-center">
+          <a
+            href="/"
+            className="
+              inline-flex items-center gap-2 rounded-xl
+              border border-cyan-400/40 bg-cyan-400/10
+              px-4 py-2 text-sm font-medium text-cyan-200
+              hover:bg-cyan-400/15 hover:border-cyan-300/50
+              focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60
+              transition
+            "
+          >
             ← Back to Hotline
           </a>
         </div>
-      </div>
-    </motion.div>
+      </section>
+    </motion.main>
   );
 }

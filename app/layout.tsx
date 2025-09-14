@@ -4,6 +4,7 @@ import SidebarMenu from "@/app/components/SidebarMenu";
 import { Poppins } from "next/font/google";
 import FeedbackFooter from "./components/FeedbackFooter";
 import { Analytics } from "@vercel/analytics/next"
+import Background from './components/Background';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,11 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable}>
       <body className="min-h-screen flex flex-col font-sans bg-neutral-900 text-white">
+        <Background />
         <SidebarMenu />
         
         <main className="flex-1">{children}</main>
         <Analytics />
-        <FeedbackFooter/>
+        
       </body>
     </html>
   );

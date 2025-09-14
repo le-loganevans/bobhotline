@@ -1,24 +1,25 @@
-"use client";
+// app/components/FeedbackFooter.tsx
+'use client';
 
-import { useRef } from "react";
-import SuggestionModal, { SuggestionModalRef } from "@/app/components/SuggestionModal";
+import { useRef } from 'react';
+import SuggestionModal, { SuggestionModalRef } from '@/app/components/SuggestionModal';
 
-export default function FeedbackFooter() {
+type Props = { className?: string };
+
+export default function FeedbackFooter({ className = '' }: Props) {
   const modalRef = useRef<SuggestionModalRef>(null);
 
   return (
     <>
-      <div className="text-center text-xs text-gray-500 mb-16 md:mb-0">
+      <div className={`text-center text-[11px] text-zinc-500 space-y-1 ${className}`}>
+        <div>v1.0.2509 — Bob Hotline — Designed by lestudio</div>
         <div>
-          v1.0.2505 — Bob Hotline — Designed by lestudio
-        </div>
-        <div>
-          Feedback?{" "}
+          Feedback?{' '}
           <button
             onClick={() => modalRef.current?.open()}
-            className="text-cyan-400 underline hover:text-cyan-300"
+            className="text-cyan-300 underline hover:text-cyan-200"
           >
-            Click Here
+            Click here
           </button>
         </div>
       </div>

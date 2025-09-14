@@ -1,105 +1,289 @@
 const confirmationTemplate = (name: string) => `
 <!DOCTYPE html>
-<html lang="en" style="margin: 0; padding: 0;">
+<html lang="en" style="margin:0;padding:0;">
   <head>
     <meta charset="UTF-8" />
+    <meta name="color-scheme" content="dark light">
+    <meta name="supported-color-schemes" content="dark light">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Thanks for Your Feedback</title>
+
+    <!-- Web font (falls back safely in clients that block it) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+      /* Some clients honor simple media queries */
+      @media (max-width: 640px) {
+        .container { width: 100% !important; }
+        .card      { padding: 24px !important; border-radius: 16px !important; }
+        .h1        { font-size: 24px !important; line-height: 1.2 !important; }
+        .p         { font-size: 14px !important; }
+        .cta       { padding: 12px 18px !important; font-size: 14px !important; }
+        .pill      { font-size: 10px !important; padding: 6px 10px !important; }
+      }
+      /* Dark-mode helpers for clients that support it */
+      :root {
+        color-scheme: dark;
+        supported-color-schemes: dark light;
+      }
+    </style>
   </head>
-  <body style="font-family: 'Poppins', sans-serif; background-color: #f3f4f6; margin: 0; padding: 0;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0; margin-left: 20px; margin-right: 20px;">
+
+  <body style="margin:0;padding:0;background:#0b0f14;">
+    <!-- Preheader (hidden preview text) -->
+    <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">
+      Thanks, ${name}. Your message reached the Bob Hotline team.
+    </div>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0;padding:24px;background:#0b0f14;">
       <tr>
         <td align="center">
-          <table width="600" style="background-color: white; border-radius: 12px; margin-bottom: 40px; margin-top: 40px; padding: 40px;">
+          <!-- Outer container -->
+          <!--[if mso]>
+          <table role="presentation" width="600" cellpadding="0" cellspacing="0"><tr><td>
+          <![endif]-->
+          <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:100%;">
             <tr>
-              <td align="center">
-                <img src="https://www.bobhotline.com/logo.jpg" alt="Bob Hotline Logo" width="100" />
-                <h1 style="color: #111827;">Thank You for Your Feedback!</h1>
-                <p style="color: #4b5563; font-size: 16px;">
-                  Hi ${name}, thanks for reaching out to Bob's developers. Your feedback has been received and is truly appreciated.
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding-top: 20px; text-align: center;">
-                <h2 style="color: #111827;">📣 What Is The Bob Project?</h2>
-                <p style="color: #374151; font-size: 15px; text-align: center;">
-                  This project was created in memory of Bob — a true Kiwi legend whose wit, charm, and voice brought joy to everyone who knew him.
-                </p>
-                <p style="color: #374151; font-size: 15px; text-align: center;">
-                  Through this app, we're preserving his spirit through iconic catchphrases, shared memories, and a growing tribute space.
-                  But we’re not stopping there.
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding-top: 20px; text-align: center;">
-                <h2 style="color: #111827;">🚀 Where We're Heading</h2>
-                <p style="color: #374151; font-size: 15px; text-align: center;">
-                  Bob Hotline is evolving into a full voice assistant, capable of holding conversations just like Bob used to — even making phone calls.
-                  Your suggestions help shape that future. Whether you're here to laugh, reflect, or just say "Horoo," you’re part of this journey now.
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td align="center" style="padding: 30px 0; text-align: center;">
-                <a href="https://www.bobhotline.com/tribute"
-                  style="background-color: #06b6d4; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">
-                  Read Bob’s Tribute →
-                </a>
-              </td>
-            </tr>
+              <td style="
+                padding: 0 8px 24px 8px;
+              ">
+                <!-- Card -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="card" style="
+                  background: #0f1420;
+                  border-radius: 20px;
+                  padding: 36px;
+                  border: 1px solid rgba(255,255,255,0.08);
+                  box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+                  background-image:
+                    radial-gradient(600px 400px at 50% -10%, rgba(60,60,80,0.18), transparent 60%),
+                    radial-gradient(900px 600px at 90% 120%, rgba(24,24,30,0.20), transparent 70%),
+                    linear-gradient(180deg, rgba(12,16,24,0.95) 0%, rgba(10,14,22,0.98) 60%, #0f1420 100%);
+                  background-blend-mode: screen, screen, normal;
+                  ">
+                  <!-- Logo -->
+                  <tr>
+                    <td align="center" style="padding-bottom: 12px;">
+                      <img src="https://www.bobhotline.com/logo.jpg" alt="Bob Hotline" width="72" height="72" style="display:block;border:0;border-radius:14px;">
+                    </td>
+                  </tr>
 
-            <tr>
-            <td align="center" style="padding: 0;">
-                <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0; width: 75%;" />
+                  <!-- Pill -->
+                  <tr>
+                    <td align="center" style="padding-bottom: 8px;">
+                      <span class="pill" style="
+                        display:inline-block;
+                        font-family: 'Poppins', Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-weight:600;
+                        letter-spacing:.06em;
+                        text-transform:uppercase;
+                        font-size:11px;
+                        color:#d1d5db;
+                        padding:8px 12px;
+                        border:1px solid rgba(255,255,255,0.1);
+                        border-radius:9999px;
+                        background: rgba(255,255,255,0.06);
+                      ">
+                        Feedback received
+                      </span>
+                    </td>
+                  </tr>
 
-                <p style="font-size: 12px; color: #9ca3af; font-style: italic; text-align: center; margin: 0;">
-                ⚠️ Replies to this inbox are not monitored.
-                </p>
+                  <!-- Heading -->
+                  <tr>
+                    <td align="center" style="padding-bottom: 8px;">
+                      <h1 class="h1" style="
+                        margin:0;
+                        font-family: 'Poppins', Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-weight:800;
+                        font-size:28px;
+                        line-height:1.25;
+                        color:#ffffff;
+                        letter-spacing:-0.02em;
+                      ">
+                        Thank you, ${name}!
+                      </h1>
+                    </td>
+                  </tr>
 
-                <a
-                href="mailto:logan.evans@lestudio.com"
-                style="font-size: 12px; font-style: italic; text-align: center; display: inline-block; margin: 0; color: #06b6d4; text-decoration: none;"
-                >
-                Contact Developers Here.
-                </a>
+                  <!-- Subcopy -->
+                  <tr>
+                    <td align="center" style="padding-bottom: 18px;">
+                      <p class="p" style="
+                        margin:0;
+                        font-family: 'Poppins', Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-weight:500;
+                        font-size:15px;
+                        line-height:1.6;
+                        color:#cbd5e1;
+                      ">
+                        Your message made it to the Bob Hotline team. We truly appreciate you taking the time to help shape where this project goes next.
+                      </p>
+                    </td>
+                  </tr>
 
-                <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0; width: 75%;" />
-            </td>
-            </tr>
+                  <!-- Divider -->
+                  <tr>
+                    <td style="padding: 16px 0;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td style="height:1px;background:linear-gradient(90deg, rgba(6,182,212,0) 0%, rgba(6,182,212,0.6) 50%, rgba(6,182,212,0) 100%);"></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
 
-            <tr>
-              <td align="center" style="padding: 0;">
-                <p style="color: #10b981; font-size: 12px; font-weight: 500;">
-                  Thanks for helping keep Bob’s spirit alive!
-                </p>
-              </td>
-            </tr>
+                  <!-- What is Bob -->
+                  <tr>
+                    <td style="padding-top: 4px;">
+                      <h2 style="
+                        margin:0 0 6px 0;
+                        font-family: 'Poppins', Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-weight:700;
+                        font-size:18px;
+                        color:#ffffff;
+                        letter-spacing:-0.01em;
+                      ">
+                        What is the Bob Project?
+                      </h2>
+                      <p class="p" style="
+                        margin:0 0 10px 0;
+                        font-family: 'Poppins', Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-weight:500;
+                        font-size:14px;
+                        line-height:1.7;
+                        color:#cbd5e1;
+                      ">
+                        Built in memory of Bob — a true Kiwi legend — this site keeps his spirit alive with iconic catchphrases, shared memories, and a growing tribute space.
+                      </p>
+                    </td>
+                  </tr>
 
-            <tr>
-            <td align="center" style="padding: 0;">
-                <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0; width: 75%;" />
-              </td>
-            </tr>
+                  <!-- Where we're heading -->
+                  <tr>
+                    <td style="padding-top: 6px;">
+                      <h2 style="
+                        margin:0 0 6px 0;
+                        font-family: 'Poppins', Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-weight:700;
+                        font-size:18px;
+                        color:#ffffff;
+                        letter-spacing:-0.01em;
+                      ">
+                        Where we're heading
+                      </h2>
+                      <p class="p" style="
+                        margin:0;
+                        font-family: 'Poppins', Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-weight:500;
+                        font-size:14px;
+                        line-height:1.7;
+                        color:#cbd5e1;
+                      ">
+                        Bob Hotline is evolving into a conversational voice assistant — true to Bob’s tone — with call-making capabilities. Your feedback helps us get there.
+                      </p>
+                    </td>
+                  </tr>
 
-            <tr>
-              <td style="font-size: 12px; color: #6b7280; text-align: center;">
-                <p>© 2025 lestudio | Christchurch, NZ</p>
-                <p>Visit us: <a href="https://www.bobhotline.com" style="color: #06b6d4; text-decoration: none;">www.bobhotline.com</a></p>
-                <p className="text-xs text-gray-400 mt-2">
-                📩 Got more to share?
-                <a href="mailto:logan.evans@lestudio.com" style="color: #06b6d4; text-decoration: none;"">
-                    Email the Developers
-                </a>
-                </p>
+                  <!-- CTA -->
+                  <tr>
+                    <td align="center" style="padding-top: 22px;">
+                      <a href="https://www.bobhotline.com/tribute" class="cta" style="
+                        display:inline-block;
+                        font-family: 'Poppins', Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-weight:700;
+                        font-size:15px;
+                        color:#ffffff;
+                        text-decoration:none;
+                        background:#06b6d4;
+                        padding:13px 22px;
+                        border-radius:12px;
+                        border:1px solid rgba(6,182,212,0.9);
+                        box-shadow: 0 6px 24px rgba(6,182,212,0.35);
+                      ">
+                        Read Bob’s Tribute →
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- Spacer + thin divider -->
+                  <tr>
+                    <td style="padding: 22px 0 10px 0;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td style="height:1px;background:rgba(255,255,255,0.08);"></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <!-- System note -->
+                  <tr>
+                    <td align="center" style="padding: 0 8px 10px 8px;">
+                      <p style="
+                        margin:0 0 6px 0;
+                        font-family: Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-size:12px;
+                        line-height:1.6;
+                        color:#94a3b8;
+                        font-style:italic;
+                      ">
+                        Replies to this inbox aren’t monitored.
+                      </p>
+                      <a href="mailto:logan.evans@lestudio.com" style="
+                        font-family: Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-size:12px;
+                        color:#06b6d4;
+                        text-decoration:none;
+                      ">
+                        Contact the developers
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- Final divider -->
+                  <tr>
+                    <td style="padding: 14px 0;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td style="height:1px;background:rgba(255,255,255,0.08);"></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <!-- Footer -->
+                  <tr>
+                    <td align="center" style="padding: 0;">
+                      <p style="
+                        margin:0 0 6px 0;
+                        font-family: Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-size:12px;
+                        color:#34d399;
+                        font-weight:600;
+                      ">
+                        Thanks for helping keep Bob’s spirit alive.
+                      </p>
+                      <p style="
+                        margin:6px 0 0 0;
+                        font-family: Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+                        font-size:12px;
+                        color:#94a3b8;
+                      ">
+                        © 2025 LE Studio · Christchurch, NZ ·
+                        <a href="https://www.bobhotline.com" style="color:#06b6d4;text-decoration:none;">bobhotline.com</a>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+                <!-- /Card -->
               </td>
             </tr>
           </table>
+          <!--[if mso]></td></tr></table><![endif]-->
         </td>
       </tr>
     </table>
   </body>
 </html>
 `;
-
 export default confirmationTemplate;
